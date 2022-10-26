@@ -19,11 +19,11 @@ tasks:
 
   build-qt:
     cmds:
-      - docker run --rm -u $UID -v $(pwd):/var/build darkmattercoder/qt-build:latest build
+      - docker run --rm -u $UID:$GID -v $(pwd):/var/build darkmattercoder/qt-build:latest build
 
   build-linux:
     cmds:
-      - docker run -it -u $UID -v $(pwd):/workdir burningdaylight/mingw-arch:qt /bin/bash
+      - docker run -it -u $UID:$GID -v $(pwd):/workdir burningdaylight/mingw-arch:qt /bin/bash
 
   build-windows-builder:
     # Build the docker image that builds the windows release
@@ -33,4 +33,4 @@ tasks:
   build-windows-release:
     cmds:
       # Now extract the generated binary
-      - docker run -it -u $UID -v $(pwd):/src qt make -C build release
+      - docker run -it -u $UID:$GID -v $(pwd):/src qt make -C build release
