@@ -1,3 +1,34 @@
+
+
+Built using QT 5
+
+Build using docker containers
+
+Linux:
+
+Windows:  https://github.com/mxe/mxe + dockerfile
+
+See Taskfile.yml for commands/tasks to run.
+
+
+```
+# Build QT portion of project
+task build-qt
+
+# Build build tools for windows
+task build-windows-builder
+
+# build exe
+task build-windows-release
+
+
+```
+
+Original readme.txt:
+
+---
+
+
 If you find bugs and/or have feature requests, please use the tracking system provided by sourceforge.
 
 As of version 0.9.6 each release is tested under Windows 7 professional (amd64) and Xubuntu 10.10 (amd64).
@@ -153,3 +184,4 @@ Version 0.9
 
 For convenience for older versions:
 Current version 1.3.0
+---

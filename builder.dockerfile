@@ -54,6 +54,8 @@ ENV PATH /build/mxe/usr/bin:$PATH
 # Add a qmake alias
 RUN ln -s /build/mxe/usr/bin/x86_64-w64-mingw32.static-qmake-qt5 /build/mxe/usr/bin/qmake
 
+RUN ln /build/mxe/usr/bin/* /usr/local/bin
+
 # Switch to the source directory. The source code will have to be mounted as a volume.
 RUN mkdir /src
 WORKDIR /src
