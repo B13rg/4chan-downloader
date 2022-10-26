@@ -10,6 +10,21 @@ tasks:
     cmds:
       - echo "{{.GREETING}}"
     silent: true
+
   build:
     cmds:
       - docker run --rm -u $UID -v $(pwd):/var/build darkmattercoder/qt-build:latest build
+
+  build-linux:
+    cmds:
+      - docker run -it -v $(pwd):/workdir burningdaylight/mingw-arch:qt /bin/bash
+
+  build-windows-builder:
+    # Build the docker image that builds the windows release
+    cmds:
+      #- docker run --rm -it -v $(pwd):/mnt builder.dockerfile
+      - docker build -t qt -f builder.dockerfile .
+  build-windows-release:
+    cmds:
+      # Now extract the generated binary
+      - docker run -it -v $(pwd):/var/build qt /bin/sh cd /var/build && make
